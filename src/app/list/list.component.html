@@ -1,0 +1,72 @@
+<div class="flex justify-center text-center items-center bg-slate-400">
+    <h1 class="text-4xl font-semibold m-6">Appointment Management System</h1>
+</div>
+
+<div class="flex justify-center p-2 m-5">
+    <div class="w-full mt-10 bg-slate-200 shadow-md rounded">
+        <div class="px-8 mt-3">
+            <h2 class="text-2xl font-semibold">Add New Appointment</h2>
+        </div>
+        <div class=" px-8 pt-6 pb-8 mb-4 md:flex gap-6 w-full" >
+         <div class="mb-6 w-full md:w-[50%]">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+              Appointment Title
+            </label>
+            <input [(ngModel)]="newAppointmentTitle"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Appointment Title" />
+          </div>
+          <div class="mb-6 w-full md:w-[40%]">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="appointmentDate">
+              Date
+            </label>
+            <input [(ngModel)]="newAppointmentDate"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="appointmentDate" type="date" placeholder="Appointment Date" />
+            
+          </div>
+          <div class="flex items-center justify-between w-full md:w-[10%] mb-3">
+            <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded focus:outline-none focus:shadow-outline w-full" type="button" (click)="addAppointment()">
+              Add
+            </button>
+           
+          </div>
+        </div>
+       
+      </div>
+    
+</div>
+<div>
+    <div class="m-5 p-5 rounded-lg bg-slate-200 text-black-700">
+       <div class="flex gap-6">
+        <ng-icon name="bootstrapCalendar2Check" class="text-3xl"></ng-icon><h1 class="text-3xl uppercase">appointments List</h1>
+       </div>
+ 
+        <table class="w-full mt-5">
+            <thead>
+                <tr class="font-bold">
+                    <td>
+                        <!-- <ng-icon name="bootstrapCheck2Square"></ng-icon> -->
+                    </td>
+                    <td>Appointment Title</td>
+                    <td>Appointment Date</td>
+                    <td>Actions</td>
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let appointment of appointments; index as i">
+                    <td>
+                        <ng-icon name="bootstrapCalendar2Heart"></ng-icon>
+                    </td>
+                    <td class="capitalize">{{appointment.title}}</td>
+                    <td>{{appointment.date}}</td>
+                    <td><div class="flex items-center justify-between w-[10%] mb-3 ">
+                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded focus:outline-none focus:shadow-outline" type="button" (click)="deleteAppointment(i)">
+                          <ng-icon name="bootstrapTrash"></ng-icon>
+                        </button>
+                       
+                      </div></td>
+                </tr>
+            </tbody>
+        </table>
+        
+    
+    </div>
+</div>
